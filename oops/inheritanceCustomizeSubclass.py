@@ -78,7 +78,7 @@ emp2.apply_raise()
 print(emp2.pay)
 
 
-# Overwritten __init__() method
+# Overwritten __init__() method which we need to see.
 print('\n')
 print('Overwritten __init__() method')
 print(dev1.email)

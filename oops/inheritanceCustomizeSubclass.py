@@ -45,7 +45,7 @@ class Employee:
 # Create a sub class developer
 class Developer(Employee):
     """
-        Changing raiseAmount value for Developers
+        Changing raiseAmount value for Developers and not Employee
     """
     raiseAmount = 1.20
 

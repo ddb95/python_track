@@ -61,7 +61,7 @@ print(Employee.__dict__)
 
 
 """
-    [Changing the raiseamount value]
+    [Changing the raiseamount value globally]
 """
 # Changing the class variable for all instances
 Employee.raiseAmount = 1.05

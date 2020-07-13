@@ -1,24 +1,8 @@
+"""[Property Decorators]
+Returns:
+    Allows our class attribute getter setter and deleter functionality
 
-"""[Dunder Methods (__init__) are special methods]
-
-    Dunder means double underscore
-    like dunder init => __init__
-
-
-    1. __repr__
-    Unabmbiguous representation of the object, for developers, used in loggin/debugging
-
-    2. __str__
-    Readable representation of the object, for end users
-
-    3. __add__
-    Add two employee objects together and the results is their combined salary
-
-    **IMPT**
-    When we print the employee object, it will print the template of __str__ first and if not avaiable it will print the __repr__ template
-
-
-    We can also print them indivisually
+    Property decorator allows us to define a method but we can access it like an attribute
 """
 
 
@@ -29,13 +13,17 @@ class Employee:
         self.firstName = fname
         self.lastName = lname
         self.pay = pay
-        self.email = fname + '.' + lname + '@gmail.com'
+        # self.email = fname + '.' + lname + '@gmail.com'
 
     def apply_raise(self):
         self.pay = int(self.pay * self.raiseAmount)
 
     def fullName(self):
         return '{} {}'.format(self.firstName, self.lastName)
+
+    @property
+    def email(self):
+        return '{}.{}@gmail.com'.format(self.firstName, self.lastName)
 
     def __repr__(self):
         return "Employee('{}' '{}' '{}')".format(self.firstName, self.lastName, self.pay)
@@ -52,12 +40,17 @@ class Employee:
 
 emp1 = Employee('Debadatta', 'Bhattacharjee', 1000)
 emp2 = Employee('Deboneil', 'Bhattacharjee', 10000)
-# Before __repr__ and __str__ methods
-# <__main__.Employee object at 0x7f11745134f0>
+
+
+# Problem without getter and setter
+# Changing name to "Mohar"
+
+emp1.firstName = 'Mohar'
+# Employee('Mohar' 'Bhattacharjee' '1000' 'Debadatta.Bhattacharjee@gmail.com')
+# Thus we see that first name changes but the email doesnt reflect the same
 print(emp1)
+print(emp1.fullName())
+# print(emp1.email())
 
-# Add
-print(emp1+emp2)
-
-# Len of Full name
-print(len(emp1))
+# Adding property decorator
+print(emp1.email)
